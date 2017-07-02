@@ -8,7 +8,10 @@ var FileMetaData = require('./models/filemetadata');
 var app = express()
 app.use(express.static('public'))
 
-mongoose.connect('mongodb://localhost/filemetadata');
+//mongoose.connect('mongodb://localhost/filemetadata');
+
+mongoose.connect('mongodb://vikashhrs:12345@ds145312.mlab.com:45312/filemetadata');
+
 
 var multer  = require('multer')
 var upload = multer({ dest: 'uploads/' })
@@ -31,7 +34,7 @@ app.post('/upload', upload.single('avatar'), function (req, res) {
 
 
 // default options 
-//app.use(fileUpload());
+//app.use(fileUpload());//
 
 app.get('/',function(req,res){
 	res.send('/public/index.html')
